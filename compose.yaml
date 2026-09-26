@@ -1,0 +1,23 @@
+x-php: &php
+  volumes:
+    - .:/app
+  working_dir: /app
+
+services:
+  # 出発点のコードを実行する
+  source:
+    <<: *php
+    image: rectorphp/php:${SOURCE_PHP_VERSION:-8.4}
+    build:
+      context: docker/php
+      args:
+        PHP_VERSION: ${SOURCE_PHP_VERSION:-8.4}
+
+  # 変換後のコードと Rector を実行する
+  target:
+    <<: *php
+    image: rectorphp/php:${TARGET_PHP_VERSION:-8.5}
+    build:
+      context: docker/php
+      args:
+        PHP_VERSION: ${TARGET_PHP_VERSION:-8.5}
