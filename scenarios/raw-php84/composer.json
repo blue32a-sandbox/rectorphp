@@ -1,0 +1,16 @@
+{
+    "name": "sandbox/raw-php84",
+    "description": "PHP 8.4 で書かれた、ライブラリを使わないコード",
+    "require": {
+        "php": "~8.4.0"
+    },
+    "require-dev": {
+        "rector/rector": "^2.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.4"
+        },
+        "sort-packages": true
+    }
+}
