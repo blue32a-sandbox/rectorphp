@@ -32,8 +32,10 @@ Bash ツール（Git Bash）から `-w /app/...` を渡すとパスが Windows �
 - 名前は出発点だけを表す: `<種類><ライブラリのバージョン>-php<出発点>`（例: `raw-php84`, `laravel10-php81`）。目標のバージョンを名前に入れない。
 - `main` のシナリオは常に出発点の状態に保つ。変換は `try/<name>-to-php<目標>` ブランチで行う。
 - シナリオには Rector だけでは直らない箇所を意図的に含めている。`main` 上でそれらを「修正」しないこと。
-- `bin/run.php` の出力を `snapshots/baseline.txt` と比べて振る舞いの変化を確認する。Deprecated は stderr に出して出力と分ける。
+- `snapshots/` の記録（`baseline.txt`、`errors-before.txt`、`rector.txt`、`target.txt`、`errors-after.txt`）は体験の一環として体験用ブランチで作る。`main` の `snapshots/` は空に保ち、記録をコミットしない。
+- 記録を保存するときは `docker compose --progress quiet run ...` にする。付けないと `Container ... Creating` などの表示が stderr に混ざる。
+- 作業ツリーの未コミットの変更は、ユーザーが体験中の成果物であることがある。触らない。
 
 ## コミット
 
-Conventional Commits 形式。type/scope は英語、説明は日本語（例: `feat(scenarios): raw-php84 シナリオを追加`）。
+Conventional Commits 形式。type/scope は英語、説明は日本語（例: `feat(scenarios): raw-php84 シナリオを追加`）。体験用ブランチでのコミットの type は README の手順に合わせる（`build` / `test` / `refactor` / `fix`）。
