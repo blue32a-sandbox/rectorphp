@@ -33,6 +33,8 @@ PHP と Composer はすべてコンテナの中で動かすので、手元に入
 
 既定値は `compose.yaml` にある。変えるときは `.env.example` を `.env` にコピーして編集し、`docker compose build --pull` する（`.env` は Git で追跡しない）。
 
+`SOURCE_PHP_VERSION` はシナリオの出発点に合わせる（例: `raw-php83` なら `8.3`）。
+
 Rector の変換先は、各シナリオの `composer.json` の `require.php` で決まる。`config.platform.php` も同じバージョンにそろえ、Composer がそのバージョンを基準に依存（Rector 自体も含む）を解決するようにする。
 
 ## シナリオ
