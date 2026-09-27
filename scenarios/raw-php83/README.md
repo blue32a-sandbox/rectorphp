@@ -17,13 +17,23 @@
 
 `bin/run.php` はすべての題材を実行し、結果を出力する。Rector だけでは移行が完了しない箇所も含まれている。
 
-## 実行
+## 体験する
 
-出発点の PHP は 8.3 なので、`.env` で `SOURCE_PHP_VERSION=8.3` にしてから `docker compose build --pull source` する。コマンドはリポジトリのルートで実行する。
+出発点の PHP は 8.3 なので、`.env` で `SOURCE_PHP_VERSION=8.3` にしてから `docker compose build --pull source` する。コマンドはリポジトリのルートで PowerShell から実行する。
+
+[体験の手順](../../README.md#体験の手順)の変数は次のように設定する。
 
 ```powershell
-docker compose run --rm -w /app/scenarios/raw-php83 target composer install
-docker compose run --rm source php -d display_errors=stderr scenarios/raw-php83/bin/run.php
+$name = "raw-php83"
+$to = "8.5"
+
+$s = "scenarios/$name"
+$branch = "try/$name-to-php$($to.Replace('.', ''))"   # try/raw-php83-to-php85
 ```
 
-体験の手順はリポジトリの [README](../../README.md#体験の手順) を参照（`raw-php84` を `raw-php83` に読み替える）。
+設定したら、出発点の PHP で動くことを確かめてから手順 0 に進む。
+
+```powershell
+docker compose run --rm -w /app/$s target composer install
+docker compose run --rm source php -d display_errors=stderr $s/bin/run.php
+```

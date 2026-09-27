@@ -15,13 +15,23 @@
 
 `bin/run.php` はすべての題材を実行し、結果を出力する。Rector だけでは移行が完了しない箇所も含まれている。
 
-## 実行
+## 体験する
 
-リポジトリのルートで実行する。
+出発点の PHP 8.4 と目標の PHP 8.5 は `compose.yaml` の既定値なので、`.env` は要らない。コマンドはリポジトリのルートで PowerShell から実行する。
+
+[体験の手順](../../README.md#体験の手順)の変数は次のように設定する。
 
 ```powershell
-docker compose run --rm -w /app/scenarios/raw-php84 target composer install
-docker compose run --rm source php -d display_errors=stderr scenarios/raw-php84/bin/run.php
+$name = "raw-php84"
+$to = "8.5"
+
+$s = "scenarios/$name"
+$branch = "try/$name-to-php$($to.Replace('.', ''))"   # try/raw-php84-to-php85
 ```
 
-体験の手順はリポジトリの [README](../../README.md#体験の手順) を参照。
+設定したら、出発点の PHP で動くことを確かめてから手順 0 に進む。
+
+```powershell
+docker compose run --rm -w /app/$s target composer install
+docker compose run --rm source php -d display_errors=stderr $s/bin/run.php
+```
