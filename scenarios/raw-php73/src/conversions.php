@@ -18,7 +18,7 @@ function find_user(array $users, string $name)
 
 function demo_conversions(): array
 {
-    // 外部から受け取った色コードの想定（先頭に # が付いている）
+    // 外部から受け取った色コードの想定（先頭の # は hexdec() が読み飛ばす）
     $color = '#ff8800';
 
     $users = [['name' => 'alice', 'role' => 'admin']];
@@ -28,7 +28,8 @@ function demo_conversions(): array
 
     return [
         // PHP 7.4 で非推奨: 変換できない文字（#）を含む値を渡す
-        'red'        => hexdec(substr($color, 0, 3)),
+        'rgb'        => hexdec($color),
+        // 見つからなければ null になる想定
         // PHP 7.4 から Notice: false や null を配列として参照する
         'role'       => $found['role'],
         // PHP 7.4 から: パスワードのアルゴリズムの識別子が整数から文字列になる

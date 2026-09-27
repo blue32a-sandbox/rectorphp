@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * 数値の書式と範囲
+ * 数値の範囲
  */
 function demo_numbers(): array
 {
@@ -14,9 +14,7 @@ function demo_numbers(): array
     $pages = range($from, $to);
 
     return [
-        // PHP 8.3 から: 負の桁数で整数部を丸める（8.2 までは 0 桁と同じ）
-        'hundreds' => number_format(1234.5678, -2),
-        'pages'    => $pages,
-        'has 3'    => in_array(3, $pages, true),
+        'pages' => $pages,
+        'has 3' => in_array(3, $pages, true),
     ];
 }

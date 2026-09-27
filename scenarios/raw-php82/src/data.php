@@ -7,7 +7,8 @@ declare(strict_types=1);
  *
  * PHP 8.3 で json_validate() が追加
  */
-function is_json(string $value): bool
+// 正しい JSON で、かつ null 以外の値を持つか（'null' は値がないものとして扱う）
+function has_json_data(string $value): bool
 {
     return json_decode($value, true) !== null && json_last_error() === JSON_ERROR_NONE;
 }
@@ -18,9 +19,9 @@ function demo_data(): array
     $saved = serialize(['id' => 1, 'name' => 'alice']) . "\n";
 
     return [
-        'valid json'   => is_json('{"id": 1}'),
-        'invalid json' => is_json('{id: 1}'),
-        'null json'    => is_json('null'),
+        'valid json'   => has_json_data('{"id": 1}'),
+        'invalid json' => has_json_data('{id: 1}'),
+        'null json'    => has_json_data('null'),
         // PHP 8.3 から: 末尾に余分なデータがあると unserialize() が Warning を出す
         'restored'     => unserialize($saved),
     ];

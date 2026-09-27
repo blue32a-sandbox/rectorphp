@@ -10,7 +10,7 @@
 |---|---|
 | `src/classes.php` | コンストラクタでのプロパティの代入、`__toString()`、`private final` |
 | `src/strings.php` | `strpos()` / `substr()` での判定、`is_numeric()` |
-| `src/comparisons.php` | 文字列と数値の比較（`switch`、`==`、`in_array()`） |
+| `src/comparisons.php` | 文字列と数値の比較（`switch`、`==`） |
 | `src/sorting.php` | `usort()`、`sort()` |
 | `src/types.php` | 値の型名、`ReflectionParameter::getClass()` |
 | `src/runtime.php` | curl のハンドル、例外、`libxml_disable_entity_loader()` |

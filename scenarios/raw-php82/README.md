@@ -10,7 +10,7 @@
 |---|---|
 | `src/classes.php` | クラス定数、`get_parent_class()` |
 | `src/data.php` | JSON の検証、`unserialize()` |
-| `src/numbers.php` | `number_format()`、`range()` |
+| `src/numbers.php` | `range()` |
 | `src/increments.php` | 文字列の `++` / `--` |
 | `src/runtime.php` | `assert_options()`、`mt_srand()`、`ReflectionProperty::setValue()` |
 

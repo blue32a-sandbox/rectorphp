@@ -7,9 +7,10 @@ declare(strict_types=1);
  */
 function demo_conversions(): array
 {
-    // 計算結果を配列のキーに使う想定
+    // 評価（小数）を星の数（整数部）ごとに数える想定
     $ratings = [];
     foreach ([4.5, 3.0, 4.8] as $score) {
+        // float のキーは小数部が切り捨てられて int になる
         // PHP 8.1 で非推奨: 小数部のある float を int のキーに暗黙に変換する
         $ratings[$score] = ($ratings[$score] ?? 0) + 1;
     }

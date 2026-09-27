@@ -16,7 +16,8 @@ function demo_sorting(): array
     foreach (range(1, 20) as $i) {
         $members[] = ['id' => $i, 'rank' => $i % 2 === 0 ? 'gold' : 'silver'];
     }
-    // PHP 8.0 から: 並べ替えが安定になり、同じランクの中では登録順が保たれる
+    // ランクごとにまとめる（同じランクの中の順序は問わない）
+    // PHP 8.0 から: 並べ替えが安定になり、同じランクの中では元の順序が保たれる
     usort($members, fn ($a, $b) => strcmp($a['rank'], $b['rank']));
 
     $mixed = ['10', 9, 'abc', 0];

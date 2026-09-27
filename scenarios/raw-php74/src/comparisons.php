@@ -6,17 +6,17 @@ declare(strict_types=1);
  * 文字列と数値の比較
  *
  * PHP 8.0 から: 数値と数値でない文字列を == で比べると、数値を文字列にして比べる
- * （7.4 までは文字列を数値にして比べるので、0 == 'abc' が true になる）
+ * （7.4 までは文字列を数値にして比べるので、'' == 0 が true になる）
  */
-function status_label($status): string
+function quantity_label($quantity): string
 {
-    switch ($status) {
-        case 'active':
-            return 'enabled';
-        case 'inactive':
-            return 'disabled';
+    switch ($quantity) {
+        case 0:
+            return 'none';
+        case 1:
+            return 'single';
         default:
-            return 'unknown';
+            return 'multiple';
     }
 }
 
@@ -27,13 +27,13 @@ function is_zero($value): bool
 
 function demo_comparisons(): array
 {
-    // 未設定のときに 0 が入る値の想定
-    $status = 0;
-    $input = 'abc';
+    // フォームから受け取った数量の想定（空欄は 0 として扱う）
+    $empty = '';
+    $one = '1';
 
     return [
-        'status label' => status_label($status),
-        'is zero'      => is_zero($input),
-        'in list'      => in_array($input, [0, 1]),
+        'label of empty' => quantity_label($empty),
+        'label of one'   => quantity_label($one),
+        'empty is zero'  => is_zero($empty),
     ];
 }
