@@ -42,6 +42,7 @@ Rector の変換先は、各シナリオの `composer.json` の `require.php` �
 
 | シナリオ | 出発点 | 内容 |
 |---|---|---|
+| [raw-php73](scenarios/raw-php73/README.md) | PHP 7.3 | ライブラリなし |
 | [raw-php74](scenarios/raw-php74/README.md) | PHP 7.4 | ライブラリなし |
 | [raw-php80](scenarios/raw-php80/README.md) | PHP 8.0 | ライブラリなし |
 | [raw-php81](scenarios/raw-php81/README.md) | PHP 8.1 | ライブラリなし |

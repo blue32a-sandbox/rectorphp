@@ -1,0 +1,16 @@
+{
+    "name": "sandbox/raw-php73",
+    "description": "PHP 7.3 で書かれた、ライブラリを使わないコード",
+    "require": {
+        "php": "~7.3.0"
+    },
+    "require-dev": {
+        "rector/rector": "^1.2 || ^2.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.3"
+        },
+        "sort-packages": true
+    }
+}
