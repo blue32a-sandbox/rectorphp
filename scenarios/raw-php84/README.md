@@ -17,13 +17,13 @@
 
 ## 体験する
 
-出発点の PHP 8.4 と目標の PHP 8.5 は `compose.yaml` の既定値なので、`.env` は要らない。コマンドはリポジトリのルートで PowerShell から実行する。
+出発点の PHP 8.4 は `compose.yaml` の既定値。目標が既定値（8.5）と違うときは、`.env` で `TARGET_PHP_VERSION` を目標に合わせて `docker compose build --pull target` する。コマンドはリポジトリのルートで PowerShell から実行する。
 
-[体験の手順](../../README.md#体験の手順)の変数は次のように設定する。
+[体験の手順](../../README.md#体験の手順)の変数は次のように設定する。`$to` は目標にする PHP で、ここでは 8.5 を例にする。
 
 ```powershell
 $name = "raw-php84"
-$to = "8.5"
+$to = "8.5"           # 目標の PHP（例）
 
 $s = "scenarios/$name"
 $branch = "try/$name-to-php$($to.Replace('.', ''))"   # try/raw-php84-to-php85

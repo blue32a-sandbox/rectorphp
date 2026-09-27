@@ -64,7 +64,7 @@ Rector の変換先は、各シナリオの `composer.json` の `require.php` �
 
 記録を保存するコマンドには `--progress quiet` を付け、`docker compose` 自身の表示（`Container ... Creating` など）が stderr に混ざらないようにする。
 
-最初に、シナリオと目標を変数に入れる。以降のコマンドはこの変数を使うので、どのシナリオでも書き換えずに実行できる。`$name` と `$to` の値は各シナリオの README にある。次の例は `raw-php84` を PHP 8.5 に上げる場合。
+最初に、シナリオと目標を変数に入れる。以降のコマンドはこの変数を使うので、どのシナリオでも書き換えずに実行できる。`$name` の値は各シナリオの README にある。`$to` には上げたい PHP のバージョンを入れる（最新とは限らない）。次の例は `raw-php84` を PHP 8.5 に上げる場合。
 
 ```powershell
 $name = "raw-php84"   # シナリオ（scenarios/ の下のディレクトリ名）
@@ -166,4 +166,4 @@ git diff main $branch -- $s
 ### やり直す・別の目標で試す
 
 - やり直す: `git switch main` → `git branch -D $branch` → 手順 1 から
-- 8.6 で試す: `.env` で `TARGET_PHP_VERSION=8.6` にして `docker compose build --pull target`、`git switch main` してから `$to = "8.6"` で変数を設定し直し、手順 1 から
+- 別の目標で試す（例: 8.6）: `.env` で `TARGET_PHP_VERSION=8.6` にして `docker compose build --pull target`、`git switch main` してから `$to = "8.6"` で変数を設定し直し、手順 1 から
